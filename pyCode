@@ -1,0 +1,45 @@
+from tkinter import *
+from tkinter import messagebox
+
+def login():
+    username = user.get()
+    password = pword.get()
+
+    if (username == "" and password == ""):
+        messagebox.showinfo("System Message", "Input Valid Details")
+    elif (username == "Klaive" and password == "klaivexd"):
+        messagebox.showinfo("Login", "Login Successful")
+        root.destroy()
+        dashboard()
+
+    else:
+        messagebox.showinfo("System Message", "Wrong Username or Password")
+
+def dashboard():
+    dash = Tk()
+    dash.title("Profile Dashboard")
+    dash.geometry("300x300")
+    dash.resizable(False, False)
+
+
+
+root = Tk()
+root.title("Login Form")
+root.geometry("300x300")
+root.resizable(False, False)
+
+global user
+global pword
+
+Label(root, text="User Login").place(x=120, y=20)
+Label(root, text="Username").place(x=50, y=70)
+Label(root, text="Password").place(x=50, y=150)
+
+user = Entry(root, bd=5)
+user.place(x=120, y=70)
+
+pword = Entry(root, show="*", bd=5)
+pword.place(x=120, y=150)
+
+Button(root, text="Login", command=login, height=2, width=13, bd=5).place(x=150, y=220)
+root.mainloop()
