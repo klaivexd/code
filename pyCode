@@ -6,14 +6,26 @@ def login():
     password = pword.get()
 
     if (username == "" and password == ""):
-        messagebox.showinfo("System Message", "Input Valid Details")
-    elif (username == "Klaive" and password == "klaivexd"):
+        messagebox.showerror("System Message", "Input Valid Details")
+    elif (username == "123" and password == "123"):
         messagebox.showinfo("Login", "Login Successful")
         root.destroy()
         dashboard()
 
     else:
-        messagebox.showinfo("System Message", "Wrong Username or Password")
+        messagebox.showerror("System Message", "Wrong Username or Password")
+
+def config1():
+    label.config(text="Name: Chrisjohn")
+
+def config2():
+    label.config(background="red")
+
+def config3():
+    label.config(background="orange")
+
+def config4():
+    label.config(background="green")
 
 def dashboard():
     dash = Tk()
@@ -21,6 +33,23 @@ def dashboard():
     dash.geometry("300x300")
     dash.resizable(False, False)
 
+    global label
+
+    label = Label(dash, text="Welcome, user!", background="orange", font="14")
+    label.pack(pady=10)
+
+    button = Button(dash, text="Display Name", font="5", command=config1)
+    button.pack(pady=10)
+
+    button = Button(dash, text="Change Color: Red", font="2", command=config2)
+    button.pack(pady=10)
+
+    button = Button(dash, text="Change Color: Orange", font="2", command=config3)
+    button.pack(pady=10)
+
+    button = Button(dash, text="Change Color: Green", font="2", command=config4)
+    button.pack(pady=10)
+    dash.mainloop()
 
 
 root = Tk()
@@ -31,7 +60,7 @@ root.resizable(False, False)
 global user
 global pword
 
-Label(root, text="User Login").place(x=120, y=20)
+Label(root, text="User Login", font="14").place(x=120, y=20)
 Label(root, text="Username").place(x=50, y=70)
 Label(root, text="Password").place(x=50, y=150)
 
